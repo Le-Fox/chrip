@@ -10,8 +10,18 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Example {
+// model Example {
+//     id        String   @id @default(cuid())
+//     createdAt DateTime @default(now())
+//     updatedAt DateTime @updatedAt
+// }
+
+model Post {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+
+    content String @db.VarChar(255)
+    autherId String
+    
+    @@index([autherId])
 }
